@@ -5,7 +5,7 @@ orbs:
 jobs:
   deploy:
     steps:
-      -checkout
+      - checkout
       - run:
           name: Install Serverless
           command: npm install -g serverless
