@@ -19,7 +19,7 @@ exports.get = async (index) => {
         let response = await axios(config);
         return response.data;
     } catch (error) {
-        return error;
+        return;
     }
 }
 
@@ -37,7 +37,7 @@ exports.getById = async (index, id) => {
         let response = await axios(config);
         return response.data;
     } catch (error) {
-        return error;
+        return;
     }
 
 }
@@ -57,7 +57,7 @@ exports.post = async (index, body) => {
         let response = await axios(config);
         return response.data;
     } catch (error) {
-        return error;
+        return;
     }
 }
 
@@ -75,7 +75,7 @@ exports.put = async (index, body, id) => {
         let response = await axios(config);
         return response.data;
     } catch (error) {
-        return error;
+        return;
     }
 }
 
@@ -93,6 +93,6 @@ exports.delete = async (index, id) => {
         let response = await axios(config);
         return response.data;
     } catch (error) {
-        return error;
+        return;
     }
 }

@@ -9,6 +9,9 @@ jobs:
         steps:
             - checkout
             - run:
+                name: Export Variable
+                command: export AUTH=$ENV_AUTH 
+            - run:
                 name: Install
                 command: npm install 
             - run:
@@ -28,6 +31,5 @@ workflows:
     node-tests:
         jobs:
             - node-tests
-            # - node/test
 
       

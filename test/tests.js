@@ -70,3 +70,47 @@ describe('DELETE / Employe',()=> {
         })
     });
 });
+
+
+describe('ERRORS / Employe',()=> {
+    it('OK, Catch Error Deleting Employe', (done)=> {
+        request(app).delete('/api/employe/123456')
+        .then((res)=> {
+            expect(res.status).to.equal(404);
+            
+            done();
+        })
+    });
+    it('OK, Catch Error Creating Employe', (done)=> {
+        request(app).post('/api/employe')
+        .then((res)=> {
+            expect(res.status).to.equal(400);
+            done();
+        })
+    });
+    it('OK, Catch Error Creating Employe', (done)=> {
+        request(app).post('/api/employe/123456')
+        .send({name:'Test Mochas', email: "tm@gmail.com"})
+        .then((res)=> {
+            expect(res.status).to.equal(404);
+            done();
+        })
+    });
+    it('OK, Catch Error Creating Employe', (done)=> {
+        request(app).put('/api/employe/123456')
+        .send({ email: "tm@gmail.com"})
+        .then((res)=> {
+            expect(res.status).to.equal(400);
+            done();
+        })
+    });
+    it('OK, Catch Error Creating Employe', (done)=> {
+        request(app).get('/api/employe/123456')
+        .then((res)=> {
+            expect(res.body).to.be.empty;
+            done();
+        })
+    });
+    
+
+});
