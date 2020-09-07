@@ -3,14 +3,28 @@ const db = require('../config/db');
 
 exports.getAllEmployes = async (req, res) => {
     let dbResponse = await db.get('employe');
-    return res.status(200).json(dbResponse.hits.hits);
+    let response = [];
+    dbResponse.hits.hits.map(r =>{
+        response.push({
+            id: r._id,
+            name: r._source.name,
+            email: r._source.email
+        });
+    });
+    return res.status(200).json(response);
 }
 
 exports.getEmployeById = async (req, res )=>{
     let dbResponse = await db.getById('employe',req.params.id);
     try {
-        return res.status(200).json(dbResponse);
+        let response = {
+            id: dbResponse._id,
+            name: dbResponse._source.name,
+            email: dbResponse._source.email
+        }
+        res.status(200).json(response);
     } catch (error) {
+        console.log(error);
         return res.status(404).json({'msg':'Usuario no encontrado'});
     }
 }

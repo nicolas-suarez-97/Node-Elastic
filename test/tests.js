@@ -34,8 +34,9 @@ describe('Get / Employe',()=> {
         .then((res)=>{
             const body = res.body;
             expect(res.status).to.equal(200);
-            expect(body).to.contain.property('_id');
-            expect(body).to.contain.property('_source');
+            expect(body).to.contain.property('id');
+            expect(body).to.contain.property('name');
+            expect(body).to.contain.property('email');
             done();
         });
     });
@@ -81,14 +82,14 @@ describe('ERRORS / Employe',()=> {
             done();
         })
     });
-    it('OK, Catch Error Creating Employe', (done)=> {
+    it('OK, Catch Error Creating Employe 1', (done)=> {
         request(app).post('/api/employe')
         .then((res)=> {
             expect(res.status).to.equal(400);
             done();
         })
     });
-    it('OK, Catch Error Creating Employe', (done)=> {
+    it('OK, Catch Error Creating Employe 2', (done)=> {
         request(app).post('/api/employe/123456')
         .send({name:'Test Mochas', email: "tm@gmail.com"})
         .then((res)=> {
@@ -96,7 +97,7 @@ describe('ERRORS / Employe',()=> {
             done();
         })
     });
-    it('OK, Catch Error Creating Employe', (done)=> {
+    it('OK, Catch Error Updating Employe', (done)=> {
         request(app).put('/api/employe/123456')
         .send({ email: "tm@gmail.com"})
         .then((res)=> {
@@ -104,10 +105,12 @@ describe('ERRORS / Employe',()=> {
             done();
         })
     });
-    it('OK, Catch Error Creating Employe', (done)=> {
+    it('OK, Catch Error Getting Employe', (done)=> {
         request(app).get('/api/employe/123456')
         .then((res)=> {
-            expect(res.body).to.be.empty;
+            const body = res.body;
+            expect(body).to.contain.property('msg');
+            expect(res.status).to.equal(404)
             done();
         })
     });
