@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node .",
     "dev": "nodemon .",
-    "test": "nyc mocha"
+    "test":"mocha --recursive --exit"
+    
   },
   "author": "Nicolas Suarez",
   "license": "ISC",
