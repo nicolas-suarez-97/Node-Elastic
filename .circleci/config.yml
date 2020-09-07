@@ -3,7 +3,7 @@ orbs:
   node: circleci/node@3.0.0
 
 jobs:
-    deploy:
+    test-deploy:
         docker:
             - image: node:latest
         steps:
@@ -14,13 +14,23 @@ jobs:
             - run:
                 name: Test
                 command: npm test
+            - run:
+                name: Install Serverless
+                command: npm install -g serverless 
+            - run:
+                name: Serverless Configuration
+                command: serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_SECRET_ACCESS_KEY
+            - run:
+                name: Deploy
+                command: npm run deploy
+        
             
 
 
 workflows:
   node-tests:
-    jobs:
-      - deploy
+    tests:
+      - test-deploy
       # - node/test
 
       
