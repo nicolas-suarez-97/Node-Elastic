@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 const baseUrl = 'https://search-employes-hsyalwsgdajn37egv3mlydji7a.us-east-1.es.amazonaws.com';
-const auth = process.env.AUTH;
+const auth = 'Basic eW9zaGlzdWFyZXoxMDpFbGFzdGljX3kwc2gxc3U0cjN6MTA=';
 
 
 
