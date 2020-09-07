@@ -25,9 +25,9 @@ jobs:
             #     command: npm run deploy
         
 workflows:
-  node-tests:
-    tests:
-      - node-tests
-      # - node/test
+    node-tests:
+        jobs:
+            - node-tests
+            # - node/test
 
       
