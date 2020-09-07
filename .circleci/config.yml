@@ -3,7 +3,7 @@ orbs:
   node: circleci/node@3.0.0
 
 jobs:
-    test-deploy:
+    deploy:
         docker:
             - image: node:latest
         steps:
@@ -24,13 +24,10 @@ jobs:
                 name: Deploy
                 command: npm run deploy
         
-            
-
-
 workflows:
   node-tests:
     tests:
-      - test-deploy
+      - deploy
       # - node/test
 
       
