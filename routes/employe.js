@@ -20,7 +20,7 @@ router.post('/',
 
 router.put('/:id',
     [
-        check('name','El nombre del proyecto es obligatorio').not().isEmpty(),
+        check('name','El nombre del empleado es obligatorio').not().isEmpty(),
     ],
     employeController.updateEmploye
 );
