@@ -2,11 +2,18 @@ version: 2.1
 orbs:
   node: circleci/node@3.0.0
 
+jobs:
+  deploy:
+    steps:
+      -checkout
+      - run:
+          name: Install Serverless
+          command: npm install -g serverless
+
 
 workflows:
   node-tests:
     jobs:
       - node/test
-      - run:
-          name: Install Serverless
-          command: npm install -g serverless
+      - deploy 
+      
