@@ -8,5 +8,5 @@ workflows:
     jobs:
       - node/test
       - run:
-        name: Install Serverless
-        command: npm install -g serverless
+          name: Install Serverless
+          command: npm install -g serverless
