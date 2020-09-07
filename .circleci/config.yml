@@ -10,7 +10,7 @@ workflows:
       - node/test
       - aws-serverless/deploy:
           name: deploy-staging
-          stack-name: staging-stack
+          stack-name: Node-Elastic-Dev
           template: ../serverless.yml
           s3-bucket: $AWS_ARTIFACT_BUCKET
           requires:
